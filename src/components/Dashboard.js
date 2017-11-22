@@ -1,47 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
-import Post from './Post';
+import PostList from './PostList';
 
-export default class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+const Dashboard = (props) => (
+  <div>
+    <PostList />
+  </div>
+);
 
-    this.state = {
-      posts: []
-    };
-  }
-
-  componentDidMount() {
-    this.getPosts();
-  }
-
-  getPosts = () => {
-    axios.get(`${process.env.BASE_URL}/posts`)
-      .then((res) => {
-        this.setState({
-          posts: res.data
-        });
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-  displayPosts = (posts) => {
-    if (this.state.posts.length > 0) {
-      return posts.map((post) => {
-        return <Post key={post.id} {...post} />
-      });
-    }
-  };
-
-  render() {
-    return (
-      <div>
-        <h1>All posts</h1>
-        {this.displayPosts(this.state.posts)}
-      </div>
-    );
-  }
-}
+export default Dashboard;

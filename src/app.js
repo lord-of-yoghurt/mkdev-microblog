@@ -24,7 +24,7 @@ import Dashboard from './components/Dashboard';
 
 const jsx = (
   // <Provider store={store}>
-    <Dashboard />
+    <AppRouter />
   // </Provider>
 );
 
