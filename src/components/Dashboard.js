@@ -1,37 +1,46 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import Post from './Post';
 
 export default class Dashboard extends Component {
-  posts = [
-    {
-      id: 1,
-      title: "First post",
-      body: "This is cool"
-    },
-    {
-      id: 2,
-      title: "Second post",
-      body: "This is even cooler"
-    },
-    {
-      id: 3,
-      title: "Last post",
-      body: "now i'm bored"
-    },
-  ];
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      posts: []
+    };
+  }
+
+  componentDidMount() {
+    this.getPosts();
+  }
+
+  getPosts = () => {
+    axios.get(`${process.env.BASE_URL}/posts`)
+      .then((res) => {
+        this.setState({
+          posts: res.data
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   displayPosts = (posts) => {
-    return posts.map(({ id, title, body }) => {
-      return <Post key={id} title={title} body={body} />
-    });
+    if (this.state.posts.length > 0) {
+      return posts.map((post) => {
+        return <Post key={post.id} {...post} />
+      });
+    }
   };
 
   render() {
     return (
       <div>
         <h1>All posts</h1>
-        {this.displayPosts(this.posts)}
+        {this.displayPosts(this.state.posts)}
       </div>
     );
   }
