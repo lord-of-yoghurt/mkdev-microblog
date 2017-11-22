@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  // make rem base 10 (default is 16px)
+  font-size: 62.5%;
+}
+
+body {
+  color: $dark-gray;
+  font-family: 'Verdana', 'Arial', sans-serif;
+  font-size: $m-size;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+input, textarea, select {
+  outline: none;
+}
+
+.is-active {
+  font-weight: bold;
+}

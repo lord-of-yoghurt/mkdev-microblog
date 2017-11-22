@@ -1,0 +1,22 @@
+language: 'node_js'
+node_js:
+  - '6.12.0'
+
+install:
+  - npm install
+
+before_script:
+  - npm run test
+
+script:
+  - npm run build:prod
+
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: your-key
+#   app: your-app-name
+
+branches:
+  only:
+    - master
