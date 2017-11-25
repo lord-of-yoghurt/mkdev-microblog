@@ -2,35 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+import { startSetPosts } from '../actions/posts';
 import Post from './Post';
 
-export default class PostList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      posts: []
-    };
-  }
-
-  componentDidMount() {
-    this.getPosts();
-  }
-
-  getPosts = () => {
-    axios.get(`${process.env.BASE_URL}/posts`)
-      .then((res) => {
-        this.setState({
-          posts: res.data
-        });
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
+class PostList extends Component {
   displayPosts = (posts) => {
-    if (this.state.posts.length > 0) {
+    if (posts && posts.length > 0) {
       return posts.map((post) => {
         return <Post key={post.id} {...post} />
       });
@@ -41,8 +18,16 @@ export default class PostList extends Component {
     return (
       <div>
         <h1>All posts</h1>
-        {this.displayPosts(this.state.posts)}
+        {this.displayPosts(this.props.posts)}
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    posts: state
+  };
+};
+
+export default connect(mapStateToProps)(PostList);

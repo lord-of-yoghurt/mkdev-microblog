@@ -15,9 +15,12 @@ export const setPosts = (posts) => ({
 
 export const startSetPosts = () => {
   return (dispatch) => {
-    axios.get(`${process.env.BASE_URL}/posts`)
+    return axios.get(`${process.env.BASE_URL}/posts`)
       .then((res) => {
         dispatch(setPosts(res.data))
+      })
+      .catch((e) => {
+        console.log(e);
       });
   };
 };
