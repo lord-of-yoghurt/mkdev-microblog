@@ -18,14 +18,30 @@ import './styles/styles.scss';
 
 // component imports
 import LoadingPage from './components/LoadingPage';
-import Dashboard from './components/Dashboard';
 
-// const store = configureStore();
+// action imports
+import { startSetPosts } from './actions/posts';
+
+const store = configureStore();
 
 const jsx = (
-  // <Provider store={store}>
-    <Dashboard />
-  // </Provider>
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
 );
 
-ReactDOM.render(jsx, document.getElementById('app'));
+let hasRendered = false;
+
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+  }
+};
+
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+
+store.dispatch(startSetPosts())
+  .then(() => {
+    renderApp();
+  });

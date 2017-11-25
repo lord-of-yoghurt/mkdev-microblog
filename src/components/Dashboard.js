@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Dashboard = () => (
+import PostList from './PostList';
+
+const Dashboard = (props) => (
   <div>
-    <p>This is the dashboard.</p>
+    <PostList />
   </div>
 );
 
