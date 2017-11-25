@@ -50,6 +50,9 @@ module.exports = (env) => {
     },
     plugins: [
       CSSExtract,
+      new webpack.DefinePlugin({
+        'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL)
+      }),
     ],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
