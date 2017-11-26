@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import CharCounter from './CharCounter';
+
 export default class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -44,17 +46,22 @@ export default class PostForm extends Component {
       <form onSubmit={this.onFormSubmit}>
         <input
           type="text"
-          placeholder="Post title"
+          placeholder="Short title"
+          maxLength="30"
           autoFocus
           value={this.state.title}
           onChange={this.onTitleChange}
         />
+        <CharCounter max={30} length={this.state.title.length} />
+        <br></br>
         <textarea
-          placeholder="Post body"
+          placeholder="Concise body"
+          maxLength="250"
           value={this.state.body}
           onChange={this.onBodyChange}
         >
         </textarea>
+        <CharCounter max={250} length={this.state.body.length} />
         <button>Submit</button>
       </form>
     );
