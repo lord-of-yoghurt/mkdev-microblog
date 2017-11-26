@@ -6,7 +6,7 @@ import { startAddPost } from '../actions/posts';
 
 class AddPost extends Component {
   onSubmit = (data) => {
-    this.props.addPost(data)
+    this.props.startAddPost(data)
       .then(() => {
         this.props.history.push('/');
       });
@@ -23,7 +23,7 @@ class AddPost extends Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addPost: (post) => dispatch(startAddPost(post))
+  startAddPost: (post) => dispatch(startAddPost(post))
 });
 
 export default connect(null, mapDispatchToProps)(AddPost);

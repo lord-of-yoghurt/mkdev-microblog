@@ -22,6 +22,26 @@ export const startAddPost = (post) => {
   };
 };
 
+// actions for editing a post
+
+export const editPost = (id, updates) => ({
+  type: co.EDIT_POST,
+  id,
+  updates
+});
+
+export const startEditPost = (id, updates) => {
+  return (dispatch) => {
+    return axios.patch(`${process.env.BASE_URL}/posts/${id}`, updates)
+      .then((res) => {
+        dispatch(editPost(id, res.data))
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+};
+
 // actions for fetching all posts
 
 export const setPosts = (posts) => ({
