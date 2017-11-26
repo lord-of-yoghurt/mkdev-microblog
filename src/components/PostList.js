@@ -3,13 +3,13 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { startSetPosts } from '../actions/posts';
-import Post from './Post';
+import PostListItem from './PostListItem';
 
 class PostList extends Component {
   displayPosts = (posts) => {
     if (posts && posts.length > 0) {
       return posts.map((post) => {
-        return <Post key={post.id} {...post} />
+        return <PostListItem key={post.id} {...post} />
       });
     }
   };
