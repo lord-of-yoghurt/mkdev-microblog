@@ -7,8 +7,8 @@ export default class PostForm extends Component {
     super(props);
 
     this.state = {
-      title: '',
-      body: '',
+      title: props.post ? props.post.title : '',
+      body: props.post ? props.post.body : '',
       error: ''
     };
   }

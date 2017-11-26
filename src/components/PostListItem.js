@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const PostListItem = ({ id, title, body }) => (
   <div>
-    <Link to={`posts/${id}`}>
+    <Link to={`edit/${id}`}>
       <h3>{title}</h3>
     </Link>
     <p>{body}</p>
