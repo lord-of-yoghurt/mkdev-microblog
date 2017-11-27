@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { startSetPosts } from '../actions/posts';
-import Post from './Post';
+import PostListItem from './PostListItem';
 
 class PostList extends Component {
   displayPosts = (posts) => {
-    if (posts && posts.length > 0) {
+    if (posts.length > 0) {
       return posts.map((post) => {
-        return <Post key={post.id} {...post} />
+        return <PostListItem key={post.id} {...post} />
       });
     }
   };
@@ -18,6 +19,7 @@ class PostList extends Component {
     return (
       <div>
         <h1>All posts</h1>
+        <Link to="/create">New post</Link>
         {this.displayPosts(this.props.posts)}
       </div>
     );

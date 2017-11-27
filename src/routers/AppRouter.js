@@ -4,6 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 
 import Dashboard from '../components/Dashboard';
 import AddPost from '../components/AddPost';
+import EditPost from '../components/EditPost';
 import NotFound from '../components/NotFound';
 // import PrivateRoute from './PrivateRoute';
 // import PublicRoute from './PublicRoute';
@@ -16,6 +17,7 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={Dashboard} exact={true} />
         <Route path="/create" component={AddPost} />
+        <Route path="/edit/:id" component={EditPost} />
         <Route component={NotFound} />
       </Switch>
     </div>
