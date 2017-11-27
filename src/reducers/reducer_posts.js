@@ -17,6 +17,8 @@ export default (state = postsReducerDefaultState, action) => {
           return post;
         }
       });
+    case co.DELETE_POST:
+      return state.filter(({ id }) => id !== action.id);
     case co.SET_POSTS:
       return action.posts;
     default:
