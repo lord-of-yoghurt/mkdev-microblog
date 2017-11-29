@@ -17,7 +17,7 @@ export const startAddPost = (post) => {
       ...post
     })
       .then((res) => {
-        dispatch(addPost(res.data))
+        dispatch(addPost(res.data));
       });
   };
 };
@@ -34,7 +34,7 @@ export const startEditPost = (id, updates) => {
   return (dispatch) => {
     return axios.patch(`${process.env.BASE_URL}/posts/${id}`, updates)
       .then((res) => {
-        dispatch(editPost(id, res.data))
+        dispatch(editPost(id, res.data));
       })
       .catch((e) => {
         console.log(e);
@@ -69,7 +69,7 @@ export const startSetPosts = () => {
   return (dispatch) => {
     return axios.get(`${process.env.BASE_URL}/posts`)
       .then((res) => {
-        dispatch(setPosts(res.data))
+        dispatch(setPosts(res.data));
       })
       .catch((e) => {
         console.log(e);
