@@ -6,6 +6,7 @@ const PostListItem = ({
   id,
   title,
   body,
+  username,
   created_at: createdAt,
   updated_at: updatedAt
 }) => (
@@ -21,6 +22,7 @@ const PostListItem = ({
         <p>Updated: {moment(updatedAt).format("MMM Do, YYYY, [at] h:mm a")}</p>
       )
     }
+    Author: {username}
     <hr></hr>
   </div>
 );

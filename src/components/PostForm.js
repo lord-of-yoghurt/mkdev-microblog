@@ -34,7 +34,8 @@ export default class PostForm extends Component {
 
     this.props.onSubmit({
       title: this.state.title,
-      body: this.state.body
+      body: this.state.body,
+      username: this.state.username
     });
 
     this.clearForm();
@@ -43,7 +44,8 @@ export default class PostForm extends Component {
   clearForm = () => {
     this.setState(() => ({
       title: '',
-      body: ''
+      body: '',
+      username: ''
     }));
   };
 
