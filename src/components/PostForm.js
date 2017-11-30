@@ -9,6 +9,7 @@ export default class PostForm extends Component {
     this.state = {
       title: props.post ? props.post.title : '',
       body: props.post ? props.post.body : '',
+      username: props.post ? props.post.username : '',
       error: ''
     };
   }
@@ -23,12 +24,18 @@ export default class PostForm extends Component {
     this.setState(() => ({ body }));
   };
 
+  onNameChange = (e) => {
+    const username = e.target.value;
+    this.setState(() => ({ username }));
+  };
+
   onFormSubmit = (e) => {
     e.preventDefault();
 
     this.props.onSubmit({
       title: this.state.title,
-      body: this.state.body
+      body: this.state.body,
+      username: this.state.username
     });
 
     this.clearForm();
@@ -37,7 +44,8 @@ export default class PostForm extends Component {
   clearForm = () => {
     this.setState(() => ({
       title: '',
-      body: ''
+      body: '',
+      username: ''
     }));
   };
 
@@ -62,6 +70,15 @@ export default class PostForm extends Component {
         >
         </textarea>
         <CharCounter max={250} length={this.state.body.length} />
+        <br></br>
+        <input
+          type="text"
+          placeholder="Your name"
+          maxLength="20"
+          value={this.state.username}
+          onChange={this.onNameChange}
+        />
+        <br></br>
         <button>Submit</button>
       </form>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 
 const CharCounter = ({ max, length }) => (
   <div>
-    Characters left: {max - length}
+    ({length}/{max})
   </div>
 );
 
