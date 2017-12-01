@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { startSetPosts } from '../actions/posts';
 import PostListItem from './PostListItem';
 
-class PostList extends Component {
+export class PostList extends Component {
   displayPosts = (posts) => {
     if (posts.length > 0) {
       return posts.map((post) => {
