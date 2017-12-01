@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import { startAddPost } from '../actions/posts';
 
-class AddPost extends Component {
+export class AddPost extends Component {
   onSubmit = (data) => {
     this.props.startAddPost(data)
-      .then(() => {
-        this.props.history.push('/');
-      });
+      // .then(() => {
+    this.props.history.push('/');
+      // });
   };
 
   render() {
