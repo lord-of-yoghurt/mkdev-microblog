@@ -26,6 +26,7 @@ class EditPost extends Component {
         <PostForm
           post={this.props.post}
           onSubmit={this.onSubmit}
+          noUsernameChange={true}
         />
         <button onClick={this.onRemoveClick}>Delete post</button>
       </div>

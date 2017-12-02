@@ -77,6 +77,7 @@ export default class PostForm extends Component {
           maxLength="20"
           value={this.state.username}
           onChange={this.onNameChange}
+          disabled={!!this.props.noUsernameChange}
         />
         <br></br>
         <button>Submit</button>
