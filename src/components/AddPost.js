@@ -7,9 +7,9 @@ import { startAddPost } from '../actions/posts';
 export class AddPost extends Component {
   onSubmit = (data) => {
     this.props.startAddPost(data)
-      // .then(() => {
-    this.props.history.push('/');
-      // });
+      .then(() => {
+        this.props.history.push('/');
+      });
   };
 
   render() {
