@@ -41,4 +41,37 @@ describe('posts reducer', () => {
 
     expect(state[0].title).toBe('i\'ve edited the title!');
   });
+
+  it('deletes a post by id', () => {
+    const action = {
+      type: co.DELETE_POST,
+      id: posts[2].id
+    };
+
+    const state = reducer(posts, action);
+
+    expect(state[2]).toBeUndefined();
+  });
+
+  it('keeps state the same if id doesn\'t exist', () => {
+    const action = {
+      type: co.DELETE_POST,
+      id: '-1'
+    };
+
+    const state = reducer(posts, action);
+
+    expect(state).toEqual(posts);
+  });
+
+  it('sets posts correctly', () => {
+    const action = {
+      type: co.SET_POSTS,
+      posts: [posts[0], posts[1]]
+    };
+
+    const state = reducer(posts, action);
+
+    expect(state).toEqual([posts[0], posts[1]]);
+  });
 });
