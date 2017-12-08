@@ -32,13 +32,19 @@ export default class PostForm extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
 
-    this.props.onSubmit({
-      title: this.state.title,
-      body: this.state.body,
-      username: this.state.username
-    });
-
-    this.clearForm();
+    if (!this.state.title || !this.state.body || !this.state.username) {
+      this.setState(() => ({
+        error: 'All three fields are required!'
+      }));
+    } else {
+      this.setState(() => ({ error: '' }));
+      this.props.onSubmit({
+        title: this.state.title,
+        body: this.state.body,
+        username: this.state.username
+      });
+      this.clearForm();
+    }
   };
 
   clearForm = () => {
@@ -52,6 +58,7 @@ export default class PostForm extends Component {
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
+        {this.state.error && <p>{this.state.error}</p>}
         <input
           type="text"
           placeholder="Short title"
