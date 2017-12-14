@@ -51,6 +51,7 @@
     "webpack": "^3.1.0"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.10.0",
     "cross-env": "^5.1.1",
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",

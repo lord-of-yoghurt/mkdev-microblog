@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import { startEditPost, startDeletePost } from '../actions/posts';
 
-class EditPost extends Component {
+export class EditPost extends Component {
   onSubmit = (data) => {
     this.props.startEditPost(this.props.post.id, data)
       .then(() => {
