@@ -57,4 +57,19 @@ describe('PostForm component', () => {
 
     expect(wrapper.state('username')).toBe(value);
   });
+
+  it('calls onSubmit upon valid data submission', () => {
+    const onSubmitSpy = jest.fn();
+    const wrapper = shallow(<PostForm post={posts[0]} onSubmit={onSubmitSpy} />);
+    wrapper.find('form').simulate('submit', {
+      preventDefault: () => {}
+    });
+
+    expect(wrapper.state('error')).toBe('');
+    expect(onSubmitSpy).toHaveBeenLastCalledWith({
+      title: posts[0].title,
+      body: posts[0].body,
+      username: posts[0].username
+    });
+  });
 });
